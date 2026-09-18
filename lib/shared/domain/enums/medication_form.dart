@@ -1,0 +1,1 @@
+enum MedicationForm { solid, liquid }

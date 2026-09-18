@@ -5,10 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   LicenseRegistry.addLicense(() async* {
     final String license = await rootBundle.loadString('assets/fonts/atkinson_hyperlegible_next/OFL.txt');
     yield LicenseEntryWithLineBreaks(['AtkinsonHyperlegibleNext'], license);
   });
+
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Color(0xFFFBFCFB),
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
+    ),
+  );
 
   runApp(const MainApp());
 }

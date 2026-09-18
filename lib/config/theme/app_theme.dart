@@ -30,19 +30,6 @@ class AppTheme {
         style: AppButtonStyles.medium(colors: colors, foreground: colors.primary),
       ),
       inputDecorationTheme: _inputDecorationTheme(colors),
-      dropdownMenuTheme: DropdownMenuThemeData(
-        textStyle: AppTypography.bodyLarge,
-        // Menu items have no margin, so the menu padding insets the highlighted option.
-        menuStyle: MenuStyle(
-          backgroundColor: WidgetStatePropertyAll(colors.surfaceContainerLow),
-          surfaceTintColor: const WidgetStatePropertyAll(Colors.transparent),
-          shadowColor: WidgetStatePropertyAll(colors.shadow),
-          elevation: const WidgetStatePropertyAll(2),
-          shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
-          padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 4, vertical: 8)),
-        ),
-      ),
-      menuButtonTheme: MenuButtonThemeData(style: _menuItemStyle(colors)),
       chipTheme: ChipThemeData(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         side: BorderSide(color: colors.outlineVariant),
@@ -51,18 +38,6 @@ class AppTheme {
         // Status pills also need `VisualDensity(vertical: -1)` to stay 32 high.
         padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 6),
         labelPadding: const EdgeInsets.symmetric(horizontal: 8),
-      ),
-      progressIndicatorTheme: ProgressIndicatorThemeData(
-        // Opts into the 2024 look: track gap and stop indicator.
-        // ignore: deprecated_member_use
-        year2023: false,
-        color: colors.primary,
-        linearTrackColor: colors.secondaryContainer,
-        linearMinHeight: 8,
-        borderRadius: BorderRadius.circular(4),
-        trackGap: 4,
-        stopIndicatorColor: colors.primary,
-        stopIndicatorRadius: 2,
       ),
       dialogTheme: DialogThemeData(
         backgroundColor: colors.surfaceContainerHigh,
@@ -141,39 +116,6 @@ class AppTheme {
           return colors.onSurface.withValues(alpha: 0.38);
         }
         return states.contains(WidgetState.error) ? colors.error : colors.onSurfaceVariant;
-      }),
-    );
-  }
-
-  ButtonStyle _menuItemStyle(ColorScheme colors) {
-    // The dropdown menu marks the highlighted option as focused.
-    return ButtonStyle(
-      minimumSize: const WidgetStatePropertyAll(Size(48, 48)),
-      padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 12)),
-      textStyle: const WidgetStatePropertyAll(AppTypography.labelLarge),
-      iconSize: const WidgetStatePropertyAll(24),
-      shape: WidgetStateProperty.resolveWith(
-        (states) =>
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(states.contains(WidgetState.focused) ? 12 : 8)),
-      ),
-      backgroundColor: WidgetStateProperty.resolveWith(
-        (states) => states.contains(WidgetState.focused) ? colors.tertiaryContainer : Colors.transparent,
-      ),
-      foregroundColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.disabled)) {
-          return colors.onSurface.withValues(alpha: 0.38);
-        }
-        return states.contains(WidgetState.focused) ? colors.onTertiaryContainer : colors.onSurface;
-      }),
-      iconColor: WidgetStateProperty.resolveWith(
-        (states) => states.contains(WidgetState.focused) ? colors.onTertiaryContainer : colors.onSurfaceVariant,
-      ),
-      // The dropdown menu needs a non-null focused color.
-      overlayColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.pressed) || states.contains(WidgetState.hovered)) {
-          return colors.onSurface.withValues(alpha: 0.08);
-        }
-        return Colors.transparent;
       }),
     );
   }

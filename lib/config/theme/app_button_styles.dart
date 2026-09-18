@@ -3,14 +3,7 @@ import 'package:flutter/material.dart';
 
 /// Button styles shared by the button themes, plus the variants a global theme cannot express.
 abstract final class AppButtonStyles {
-  static const double _pressedCornerRadius = 12;
-
-  /// Fully rounded, with a 12 corner radius while pressed.
-  static final WidgetStateProperty<OutlinedBorder> shape = WidgetStateProperty.resolveWith(
-    (states) => states.contains(WidgetState.pressed)
-        ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(_pressedCornerRadius))
-        : const StadiumBorder(),
-  );
+  static const WidgetStateProperty<OutlinedBorder> shape = WidgetStatePropertyAll<OutlinedBorder>(StadiumBorder());
 
   /// State layer tinted with the label color.
   static WidgetStateProperty<Color?> overlay(Color color) => WidgetStateProperty.resolveWith((states) {
@@ -65,18 +58,4 @@ abstract final class AppButtonStyles {
     textStyle: WidgetStatePropertyAll(AppTypography.labelLarge),
     iconSize: WidgetStatePropertyAll(20),
   );
-
-  /// Filled icon button, Medium size.
-  static ButtonStyle filledIcon(ColorScheme colors) {
-    return ButtonStyle(
-      fixedSize: const WidgetStatePropertyAll(Size.square(56)),
-      minimumSize: const WidgetStatePropertyAll(Size.square(56)),
-      padding: const WidgetStatePropertyAll(EdgeInsets.zero),
-      iconSize: const WidgetStatePropertyAll(24),
-      shape: shape,
-      backgroundColor: container(colors, colors.primary),
-      foregroundColor: content(colors, colors.onPrimary),
-      overlayColor: overlay(colors.onPrimary),
-    );
-  }
 }
