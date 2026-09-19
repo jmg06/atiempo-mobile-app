@@ -2,11 +2,19 @@ import 'package:atiempo_mobile_app/config/theme/app_dimens.dart';
 import 'package:flutter/material.dart';
 
 class AppCheckbox extends StatelessWidget {
-  const AppCheckbox({required this.value, required this.onChanged, this.label, this.isEnabled = true, super.key});
+  const AppCheckbox({
+    required this.value,
+    required this.onChanged,
+    this.label,
+    this.labelAlignment = CrossAxisAlignment.start,
+    this.isEnabled = true,
+    super.key,
+  });
 
   final bool value;
   final ValueChanged<bool>? onChanged;
   final String? label;
+  final CrossAxisAlignment labelAlignment;
   final bool isEnabled;
 
   @override
@@ -26,16 +34,11 @@ class AppCheckbox extends StatelessWidget {
     return InkWell(
       onTap: isEnabled && onChanged != null ? () => onChanged!(!value) : null,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: labelAlignment,
         spacing: AppDimens.space8,
         children: <Widget>[
           box,
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: AppDimens.space12),
-              child: Text(label!, style: Theme.of(context).textTheme.bodyLarge),
-            ),
-          ),
+          Expanded(child: Text(label!, style: Theme.of(context).textTheme.bodyLarge)),
         ],
       ),
     );

@@ -25,10 +25,16 @@ class AppDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      constraints: const BoxConstraints.tightFor(width: _width),
       title: Text(title),
-      content: SizedBox(width: _width, child: Text(message)),
+      content: Text(message),
       titlePadding: const EdgeInsets.fromLTRB(AppDimens.space24, AppDimens.space24, AppDimens.space24, 0),
-      contentPadding: const EdgeInsets.fromLTRB(AppDimens.space24, AppDimens.space16, AppDimens.space24, 0),
+      contentPadding: const EdgeInsets.fromLTRB(
+        AppDimens.space24,
+        AppDimens.space16,
+        AppDimens.space24,
+        AppDimens.space20,
+      ),
       actions: <Widget>[
         if (dismissLabel != null)
           TextButton(style: AppButtonStyles.small, onPressed: onDismiss, child: Text(dismissLabel!)),

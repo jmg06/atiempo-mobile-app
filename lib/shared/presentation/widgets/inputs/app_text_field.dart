@@ -1,3 +1,4 @@
+import 'package:atiempo_mobile_app/shared/presentation/icons/app_icons.dart';
 import 'package:flutter/material.dart';
 
 class AppTextField extends StatelessWidget {
@@ -22,16 +23,30 @@ class AppTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final ValueChanged<String>? onChanged;
 
+  /// The field and its supporting line, so an error never pushes what comes below.
+  static const double _footprint = 80;
+
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      enabled: isEnabled,
-      obscureText: isObscured,
-      keyboardType: keyboardType,
-      onChanged: onChanged,
-      style: Theme.of(context).textTheme.bodyLarge,
-      decoration: InputDecoration(labelText: label, helperText: supportingText, errorText: errorText),
+    return SizedBox(
+      height: _footprint,
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: TextField(
+          controller: controller,
+          enabled: isEnabled,
+          obscureText: isObscured,
+          keyboardType: keyboardType,
+          onChanged: onChanged,
+          style: Theme.of(context).textTheme.bodyLarge,
+          decoration: InputDecoration(
+            labelText: label,
+            helperText: supportingText,
+            errorText: errorText,
+            suffixIcon: errorText == null ? null : const Icon(AppIcons.error),
+          ),
+        ),
+      ),
     );
   }
 }

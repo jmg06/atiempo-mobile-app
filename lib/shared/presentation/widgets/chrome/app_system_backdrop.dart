@@ -1,4 +1,5 @@
 import 'package:atiempo_mobile_app/config/theme/app_dimens.dart';
+import 'package:atiempo_mobile_app/shared/presentation/widgets/chrome/app_status_bar_style.dart';
 import 'package:atiempo_mobile_app/shared/presentation/widgets/headers/app_brand_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,11 +20,7 @@ class AppSystemBackdrop extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.dark,
-      ),
+      value: AppStatusBarStyle.onBrand,
       child: SizedBox.expand(
         child: DecoratedBox(
           decoration: BoxDecoration(gradient: AppBrandGradient.backdrop(context)),

@@ -7,6 +7,7 @@ class AppFeatureRow extends StatelessWidget {
   const AppFeatureRow({
     required this.icon,
     required this.text,
+    this.detail,
     this.tone = IconTone.ink,
     this.hasBadge = true,
     super.key,
@@ -14,10 +15,12 @@ class AppFeatureRow extends StatelessWidget {
 
   final IconData icon;
   final String text;
+  final String? detail;
   final IconTone tone;
   final bool hasBadge;
 
   static const double _badgeSize = 40;
+  static const double _detailGap = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class AppFeatureRow extends StatelessWidget {
     final Widget glyph = AppProductIcon(icon, tone: tone);
 
     return Row(
-      crossAxisAlignment: hasBadge ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+      crossAxisAlignment: hasBadge && detail == null ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       spacing: hasBadge ? AppDimens.space12 : AppDimens.space8,
       children: <Widget>[
         if (hasBadge)
@@ -41,7 +44,21 @@ class AppFeatureRow extends StatelessWidget {
           )
         else
           glyph,
-        Expanded(child: Text(text, style: theme.textTheme.bodyLarge)),
+        Expanded(
+          child: detail == null
+              ? Text(text, style: theme.textTheme.bodyLarge)
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: _detailGap,
+                  children: <Widget>[
+                    Text(text, style: theme.textTheme.titleMedium),
+                    Text(
+                      detail!,
+                      style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    ),
+                  ],
+                ),
+        ),
       ],
     );
   }

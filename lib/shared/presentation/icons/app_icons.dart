@@ -11,6 +11,7 @@ abstract final class AppIcons {
   static const IconData checkCircle = Icons.check_circle_outlined;
   static const IconData close = Icons.close_outlined;
   static const IconData warning = Icons.warning_outlined;
+  static const IconData error = Icons.error_outlined;
   static const IconData notificationsActive = Icons.notifications_active_outlined;
   static const IconData recordVoiceOver = Icons.record_voice_over_outlined;
   static const IconData send = Icons.send_outlined;
@@ -26,31 +27,4 @@ abstract final class AppIcons {
   static const IconData arrowBack = Icons.arrow_back_outlined;
   static const IconData chevronRight = Icons.chevron_right_outlined;
   static const IconData expandMore = Icons.expand_more_outlined;
-
-  static const List<(String, IconData)> all = <(String, IconData)>[
-    ('alarm', alarm),
-    ('schedule', schedule),
-    ('history', history),
-    ('pending', pending),
-    ('medication', medication),
-    ('medication_liquid', medicationLiquid),
-    ('check_circle', checkCircle),
-    ('close', close),
-    ('warning', warning),
-    ('notifications_active', notificationsActive),
-    ('record_voice_over', recordVoiceOver),
-    ('send', send),
-    ('person', person),
-    ('home', home),
-    ('smartphone', smartphone),
-    ('wifi_off', wifiOff),
-    ('lock', lock),
-    ('fingerprint', fingerprint),
-    ('add', add),
-    ('edit', edit),
-    ('delete', delete),
-    ('arrow_back', arrowBack),
-    ('chevron_right', chevronRight),
-    ('expand_more', expandMore),
-  ];
 }

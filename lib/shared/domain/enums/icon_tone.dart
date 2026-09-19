@@ -1,1 +1,1 @@
-enum IconTone { ink, muted, done, attention, onBrand }
+enum IconTone { ink, muted, done, attention, delegated, onBrand }

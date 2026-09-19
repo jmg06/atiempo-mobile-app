@@ -35,43 +35,48 @@ class AppDoseBlockCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(AppDimens.cornerMedium),
-      child: Container(
-        padding: const EdgeInsets.all(AppDimens.space16),
+      child: DecoratedBox(
         decoration: BoxDecoration(
           color: theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(AppDimens.cornerMedium),
           border: Border.all(color: theme.colorScheme.outlineVariant),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          spacing: AppDimens.space8,
-          children: <Widget>[
-            Row(
-              spacing: AppDimens.space12,
-              children: <Widget>[
-                if (icon != null) AppProductIcon(icon, tone: tone),
-                Expanded(child: Text(time, style: theme.textTheme.titleLarge)),
-                AppStatusPill(kind: pill, label: statusLabel ?? label),
-              ],
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: Text(medication, style: theme.textTheme.titleMedium),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: Text(dose, style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
-            ),
-            if (note != null)
+        child: Padding(
+          padding: const EdgeInsets.all(AppDimens.space16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            spacing: AppDimens.space8,
+            children: <Widget>[
+              Row(
+                spacing: AppDimens.space12,
+                children: <Widget>[
+                  if (icon != null) AppProductIcon(icon, tone: tone),
+                  Expanded(child: Text(time, style: theme.textTheme.titleLarge)),
+                  AppStatusPill(kind: pill, label: statusLabel ?? label),
+                ],
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Text(medication, style: theme.textTheme.titleMedium),
+              ),
               SizedBox(
                 width: double.infinity,
                 child: Text(
-                  note!,
-                  style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                  dose,
+                  style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.onSurfaceVariant),
                 ),
               ),
-          ],
+              if (note != null)
+                SizedBox(
+                  width: double.infinity,
+                  child: Text(
+                    note!,
+                    style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

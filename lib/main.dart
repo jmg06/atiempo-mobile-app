@@ -1,5 +1,7 @@
 import 'package:atiempo_mobile_app/config/router/app_router.dart';
 import 'package:atiempo_mobile_app/config/theme/app_theme.dart';
+import 'package:atiempo_mobile_app/shared/data/repositories/in_memory_dose_day_repository.dart';
+import 'package:atiempo_mobile_app/shared/presentation/scope/dose_day_scope.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,7 +22,7 @@ void main() {
     ),
   );
 
-  runApp(const MainApp());
+  runApp(DoseDayScope(repository: InMemoryDoseDayRepository(), child: const MainApp()));
 }
 
 class MainApp extends StatelessWidget {

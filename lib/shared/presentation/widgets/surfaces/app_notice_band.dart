@@ -19,8 +19,7 @@ class AppNoticeBand extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final (Color container, Color onContainer) = _colors(context);
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: AppDimens.space16, vertical: _verticalPadding),
+    return DecoratedBox(
       decoration: BoxDecoration(
         color: container,
         borderRadius: BorderRadius.circular(AppDimens.cornerMedium),
@@ -28,15 +27,18 @@ class AppNoticeBand extends StatelessWidget {
             ? Border.all(color: context.appColors.statePending, width: _attentionBorderWidth)
             : null,
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: AppDimens.space12,
-        children: <Widget>[
-          AppProductIcon(icon, color: onContainer),
-          Expanded(
-            child: Text(text, style: theme.textTheme.bodyLarge?.copyWith(color: onContainer)),
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppDimens.space16, vertical: _verticalPadding),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: AppDimens.space12,
+          children: <Widget>[
+            AppProductIcon(icon, color: onContainer),
+            Expanded(
+              child: Text(text, style: theme.textTheme.bodyLarge?.copyWith(color: onContainer)),
+            ),
+          ],
+        ),
       ),
     );
   }

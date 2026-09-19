@@ -27,6 +27,7 @@ class AppProductIcon extends StatelessWidget {
       IconTone.muted => colors.onSurfaceVariant,
       IconTone.done => context.appColors.stateDone,
       IconTone.attention => context.appColors.statePending,
+      IconTone.delegated => context.appColors.stateDelegated,
       IconTone.onBrand => colors.onPrimary,
     };
   }
