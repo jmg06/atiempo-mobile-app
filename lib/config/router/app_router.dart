@@ -1,5 +1,4 @@
 import 'package:atiempo_mobile_app/config/router/app_routes.dart';
-import 'package:atiempo_mobile_app/config/router/placeholder_screen.dart';
 import 'package:atiempo_mobile_app/features/access/presentation/screens/activate_access_screen.dart';
 import 'package:atiempo_mobile_app/features/access/presentation/screens/consent_screen.dart';
 import 'package:atiempo_mobile_app/features/access/presentation/screens/create_account_screen.dart';
@@ -11,6 +10,10 @@ import 'package:atiempo_mobile_app/features/alarm/presentation/screens/delegated
 import 'package:atiempo_mobile_app/features/alarm/presentation/screens/dose_confirmed_screen.dart';
 import 'package:atiempo_mobile_app/features/alarm/presentation/screens/pre_alert_screen.dart';
 import 'package:atiempo_mobile_app/features/alarm/presentation/screens/still_pending_screen.dart';
+import 'package:atiempo_mobile_app/features/day/presentation/screens/block_delegation_screen.dart';
+import 'package:atiempo_mobile_app/features/day/presentation/screens/block_detail_screen.dart';
+import 'package:atiempo_mobile_app/features/day/presentation/screens/delegate_block_screen.dart';
+import 'package:atiempo_mobile_app/features/day/presentation/screens/today_screen.dart';
 import 'package:atiempo_mobile_app/features/flows/presentation/flows_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -36,14 +39,19 @@ final GoRouter appRouter = GoRouter(
         _screen(AppRoutes.doseConfirmedOffline, (_) => const DoseConfirmedScreen(isOffline: true)),
         _screen(AppRoutes.delegatedDose, (_) => const DelegatedDoseScreen()),
         _screen(AppRoutes.stillPending, (_) => const StillPendingScreen()),
-        _screen(AppRoutes.today, (_) => const PlaceholderScreen(title: 'Hoy: el día del tratamiento')),
-        _screen(AppRoutes.blockDetailPattern, (_) => const PlaceholderScreen(title: 'Detalle del bloque')),
-        _screen(AppRoutes.delegateBlockPattern, (_) => const PlaceholderScreen(title: 'Elegir a quién delegar')),
-        _screen(AppRoutes.blockDelegationPattern, (_) => const PlaceholderScreen(title: 'Esperando el acuse')),
+        _screen(AppRoutes.today, (_) => const TodayScreen()),
+        _screen(AppRoutes.blockDetailPattern, (GoRouterState state) => BlockDetailScreen(blockId: _blockId(state))),
+        _screen(AppRoutes.delegateBlockPattern, (GoRouterState state) => DelegateBlockScreen(blockId: _blockId(state))),
+        _screen(
+          AppRoutes.blockDelegationPattern,
+          (GoRouterState state) => BlockDelegationScreen(blockId: _blockId(state)),
+        ),
       ],
     ),
   ],
 );
+
+String _blockId(GoRouterState state) => state.pathParameters[AppRoutes.blockIdParameter]!;
 
 GoRoute _screen(String location, Widget Function(GoRouterState state) build) {
   return GoRoute(

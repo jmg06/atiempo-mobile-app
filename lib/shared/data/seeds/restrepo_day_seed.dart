@@ -10,13 +10,19 @@ abstract final class RestrepoDaySeed {
     name: 'Anticonvulsivante',
     amount: '1 tableta entera',
     form: MedicationForm.solid,
+    instructions: 'con agua',
   );
   static const Medication _antidepressant = Medication(
     name: 'Antidepresivo',
     amount: 'Media tableta',
     form: MedicationForm.solid,
   );
-  static const Medication _supplement = Medication(name: 'Suplemento', amount: '5 gotas', form: MedicationForm.liquid);
+  static const Medication _supplement = Medication(
+    name: 'Suplemento',
+    amount: '5 gotas',
+    form: MedicationForm.liquid,
+    instructions: 'con el gotero',
+  );
 
   static List<DoseBlock> blocks() {
     return const <DoseBlock>[
