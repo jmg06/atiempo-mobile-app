@@ -44,29 +44,37 @@ Las otras diecisiete pantallas están en el repositorio de la versión web.
 
 ## Enlaces
 
-| Recurso                       | Enlace                                                                                                                                |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Descarga del APK              | _Pendiente_ <!-- TODO: poner aquí el enlace de descarga del APK -->                                                                   |
-| Repositorio de la versión web | [github.com/jmg06/atiempo-web-app](https://github.com/jmg06/atiempo-web-app)                                                          |
-| Diseño en Figma               | [A tiempo App · Mockups](https://www.figma.com/design/XqwhO9RKSVZWD79l1027zh/A-tiempo-App---Mockups?node-id=12-2&t=o9YuwcPI4q9tjBhl-1) |
+| Recurso                       | Enlace                                                                                                                                               |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Descarga del APK              | [Descargar el APK](https://uniandes-my.sharepoint.com/:u:/g/personal/jm_gutierrezg1_uniandes_edu_co/IQAN89XQUw2qSbx8TrC3RZUnARar1pOzlbc1OXtRiXWDEA8) |
+| Repositorio de la versión web | [github.com/jmg06/atiempo-web-app](https://github.com/jmg06/atiempo-web-app)                                                                         |
+| Diseño en Figma               | [A tiempo App · Mockups](https://www.figma.com/design/XqwhO9RKSVZWD79l1027zh/A-tiempo-App---Mockups?node-id=12-2&t=o9YuwcPI4q9tjBhl-1)               |
 
 ## Dos formas de probar la aplicación
 
-1. **Instalar el APK en un teléfono Android.** Es la forma más rápida: no hay que instalar nada en el
-   computador. Ver [Instalar el APK](#instalar-el-apk).
+1. **Instalar el APK** en un teléfono Android o en un emulador. Es la forma más rápida: no hay que compilar
+   nada. Ver [Instalar el APK](#instalar-el-apk).
 2. **Ejecutar el proyecto desde el código**, en un emulador o en un teléfono conectado al computador. Hay que
    instalar varias herramientas y la primera vez toma un buen rato. Ver
    [Instalación paso a paso](#instalación-paso-a-paso).
 
 ## Instalar el APK
 
-Se necesita un teléfono con **Android 7.0 o superior**.
+El enlace de descarga, en la tabla de [Enlaces](#enlaces), pide iniciar sesión con la **cuenta de Uniandes**.
+Lo más sencillo es descargar el APK en el computador, donde esa sesión suele estar abierta, y desde ahí
+instalarlo en un emulador o pasarlo al teléfono.
 
-1. Desde el teléfono, abrir el enlace **Descarga del APK** de la tabla de [Enlaces](#enlaces) y descargar el
-   archivo `.apk`.
-2. Abrir el archivo descargado (desde la notificación de descarga o desde la aplicación **Archivos**).
-3. Si Android dice que el navegador no tiene permiso para instalar aplicaciones desconocidas, tocar
-   **Configuración**, activar **Permitir de esta fuente** y volver atrás.
+**En un emulador de Android:** arrastrar el archivo `.apk` a la ventana del emulador y esperar a que se
+instale. Para crear un emulador, ver el [paso 8](#8-preparar-dónde-se-va-a-ver-la-aplicación) de la
+instalación.
+
+**En un teléfono con Android 7.0 o superior:**
+
+1. Poner el archivo `.apk` en el teléfono: pasarlo desde el computador (por cable, correo, etc.) o
+   descargarlo desde el enlace, tocando **Descargar**.
+2. Abrir el archivo (desde la notificación de descarga o desde la aplicación **Archivos**).
+3. Si Android dice que no hay permiso para instalar aplicaciones desconocidas, tocar **Configuración**,
+   activar **Permitir de esta fuente** y volver atrás.
 4. Tocar **Instalar**.
 5. Si aparece un aviso de **Google Play Protect** diciendo que la aplicación no es conocida, tocar **Más
    detalles → Instalar de todos modos**. Sale porque la aplicación no viene de la Play Store.
