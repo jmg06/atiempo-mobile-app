@@ -1,0 +1,12 @@
+# Regenerate with: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: false
+  # Android 7.1 and older: the whole mark.
+  image_path: assets/branding/app_icon.png
+  min_sdk_android: 24
+  # Android 8+: the diamond over the brand teal, so the launcher can crop it to any shape.
+  adaptive_icon_background: "#0E5A50"
+  adaptive_icon_foreground: assets/branding/app_icon_foreground.png
+  # Android 13+ themed icons only read the alpha, so the same diamond works.
+  adaptive_icon_monochrome: assets/branding/app_icon_foreground.png
