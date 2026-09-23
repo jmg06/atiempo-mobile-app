@@ -1,0 +1,14 @@
+# Regenerate with: dart run flutter_native_splash:create
+flutter_native_splash:
+  # The app surface color, so the splash hands over to the first screen without a jump.
+  color: "#FBFCFB"
+  image: assets/branding/splash_logo.png
+
+  # Android 12+ draws its own splash and crops the image to a 768 px circle inside the 1152 px canvas.
+  android_12:
+    color: "#FBFCFB"
+    image: assets/branding/splash_logo_android_12.png
+
+  android: true
+  ios: false
+  web: false

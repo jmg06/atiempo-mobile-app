@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 abstract final class AppIcons {
   static const IconData alarm = Icons.alarm_outlined;
   static const IconData schedule = Icons.schedule_outlined;
-  static const IconData history = Icons.history_outlined;
   static const IconData pending = Icons.pending_outlined;
   static const IconData medication = Icons.medication_outlined;
   static const IconData medicationLiquid = Icons.medication_liquid_outlined;
@@ -21,10 +20,5 @@ abstract final class AppIcons {
   static const IconData wifiOff = Icons.wifi_off_outlined;
   static const IconData lock = Icons.lock_outlined;
   static const IconData fingerprint = Icons.fingerprint_outlined;
-  static const IconData add = Icons.add_outlined;
-  static const IconData edit = Icons.edit_outlined;
-  static const IconData delete = Icons.delete_outlined;
-  static const IconData arrowBack = Icons.arrow_back_outlined;
   static const IconData chevronRight = Icons.chevron_right_outlined;
-  static const IconData expandMore = Icons.expand_more_outlined;
 }

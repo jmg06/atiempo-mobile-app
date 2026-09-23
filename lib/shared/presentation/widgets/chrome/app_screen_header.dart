@@ -3,9 +3,11 @@ import 'package:atiempo_mobile_app/config/theme/app_dimens.dart';
 import 'package:flutter/material.dart';
 
 class AppScreenHeader extends StatelessWidget implements PreferredSizeWidget {
-  const AppScreenHeader({this.onBack, super.key});
+  const AppScreenHeader({this.onBack, this.actionLabel, this.onAction, super.key});
 
   final VoidCallback? onBack;
+  final String? actionLabel;
+  final VoidCallback? onAction;
 
   static const String _backLabel = 'VOLVER';
   static const double _barHeight = 64;
@@ -30,6 +32,9 @@ class AppScreenHeader extends StatelessWidget implements PreferredSizeWidget {
               child: Row(
                 children: <Widget>[
                   TextButton(style: AppButtonStyles.small, onPressed: onBack, child: const Text(_backLabel)),
+                  const Spacer(),
+                  if (actionLabel != null)
+                    OutlinedButton(style: AppButtonStyles.small, onPressed: onAction, child: Text(actionLabel!)),
                 ],
               ),
             ),
