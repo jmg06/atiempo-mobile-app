@@ -73,6 +73,7 @@ class TodayScreen extends StatelessWidget {
 
   String? _note(DoseBlock block) {
     return switch (block.status) {
+      DoseBlockStatus.ringing => 'Está sonando ahora',
       DoseBlockStatus.done when block.givenAt != null => 'Se registró a las ${ClockFormatter.time(block.givenAt!)}',
       DoseBlockStatus.delegated when block.delegatedAt != null =>
         '${block.delegatedTo} la recibió a las ${ClockFormatter.time(block.delegatedAt!)}',

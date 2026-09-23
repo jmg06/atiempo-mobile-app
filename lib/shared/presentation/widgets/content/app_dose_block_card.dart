@@ -31,15 +31,20 @@ class AppDoseBlockCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final (IconData? icon, IconTone tone, StatusPillKind pill, String label) = _status;
+    final isWarn = status == DoseBlockStatus.pending || status == DoseBlockStatus.ringing;
+    final isRinging = status == DoseBlockStatus.ringing;
 
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(AppDimens.cornerMedium),
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
+          color: isRinging ? theme.colorScheme.errorContainer : theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(AppDimens.cornerMedium),
-          border: Border.all(color: theme.colorScheme.outlineVariant),
+          border: Border.all(
+            color: isWarn ? theme.colorScheme.error : theme.colorScheme.outlineVariant,
+            width: isWarn ? 2.0 : 1.0,
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(AppDimens.space16),
@@ -72,7 +77,9 @@ class AppDoseBlockCard extends StatelessWidget {
                   width: double.infinity,
                   child: Text(
                     note!,
-                    style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: isRinging ? theme.colorScheme.onErrorContainer : theme.colorScheme.onSurfaceVariant,
+                    ),
                   ),
                 ),
             ],
@@ -85,7 +92,7 @@ class AppDoseBlockCard extends StatelessWidget {
   (IconData?, IconTone, StatusPillKind, String) get _status {
     return switch (status) {
       DoseBlockStatus.scheduled => (null, IconTone.ink, StatusPillKind.scheduled, 'PROGRAMADA'),
-      DoseBlockStatus.pending => (AppIcons.pending, IconTone.attention, StatusPillKind.pending, 'PENDIENTE'),
+      DoseBlockStatus.pending => (AppIcons.alarm, IconTone.attention, StatusPillKind.pending, 'PENDIENTE'),
       DoseBlockStatus.ringing => (AppIcons.notificationsActive, IconTone.attention, StatusPillKind.pending, 'SONANDO'),
       DoseBlockStatus.done => (AppIcons.checkCircle, IconTone.done, StatusPillKind.done, 'CUMPLIDA'),
       DoseBlockStatus.delegated => (AppIcons.send, IconTone.ink, StatusPillKind.delegated, 'DELEGADA'),
